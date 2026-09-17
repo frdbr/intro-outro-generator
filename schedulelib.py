@@ -7,6 +7,7 @@ from schedulelib_json import events_from_json_schedule
 def _from_url(schedule_url):
     print(f"Downloading schedule from URL: {schedule_url}")
     r = get(schedule_url, timeout=10)
+    r.encoding = r.apparent_encoding
     r.raise_for_status()
     return r.text
 
